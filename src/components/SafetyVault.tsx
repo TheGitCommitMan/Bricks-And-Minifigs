@@ -27,72 +27,75 @@ export default function SafetyVault({
   };
 
   return (
-    <div className="space-y-8" id="consignment-planner">
+    <div className="space-y-10" id="consignment-planner">
       {/* Structural visual header */}
-      <div className="p-6 bg-lego-blue text-white border-3 border-black rounded-none shadow-lego relative overflow-hidden">
+      <div className="p-6 md:p-8 bg-lego-blue text-white rounded-2xl shadow-lego relative overflow-hidden">
         {/* Subtle background detail */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-none rotate-45 translate-x-16 -translate-y-16" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full translate-x-12 -translate-y-12" />
         
-        <div className="space-y-1.5 relative">
+        <div className="space-y-2 relative z-10">
           <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-lego-yellow fill-lego-yellow" />
-            <h2 className="text-sm font-black uppercase tracking-wider text-lego-yellow">Standard Consignment Planner & Contract Draft Builder</h2>
+            <Shield className="w-5 h-5 text-amber-500" />
+            <h2 className="text-xs font-mono font-bold tracking-widest text-amber-500 uppercase">Standard Consignment Planner & Contract Draft Builder</h2>
           </div>
-          <p className="text-xs text-zinc-100 max-w-xl leading-relaxed font-medium">
-            At Bricks & Minifigs®, we believe community trust is built on accountability. This standard consignment planner helps you catalog your collection, verify store policy limits, and draft a formal Bailment and Consignment Agreement prior to dropping off items.
+          <h3 className="text-xl md:text-2xl font-display font-semibold tracking-tight text-white">
+            Bailment & Operational Accountability Drafts
+          </h3>
+          <p className="text-xs text-zinc-300 max-w-2xl leading-relaxed font-normal">
+            At Bricks & Minifigs®, we believe community trust is built on legal clarity. This standard consignment planner helps you catalog your collection, verify franchise policy limits, and draft a binding commercial Bailment Agreement prior to element drop-off.
           </p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Form Controls Column */}
-        <div className="lg:col-span-5 bg-white border-3 border-black rounded-none p-5 space-y-4 shadow-lego">
-          <h3 className="text-xs font-black text-black uppercase tracking-wider pb-3 border-b-2 border-black flex items-center gap-1.5">
-            <FileText className="w-4 h-4 text-black" />
+        <div className="lg:col-span-5 bg-white border border-zinc-100 rounded-2xl p-6 space-y-5 shadow-lego">
+          <h3 className="text-sm font-heading font-bold text-zinc-900 pb-3 border-b border-zinc-100 flex items-center gap-2">
+            <FileText className="w-4 h-4 text-zinc-500" />
             Consignment Parameters
           </h3>
 
           {/* Consignor Details */}
-          <div className="space-y-3 pt-1">
-            <div className="space-y-1">
-              <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-                <User className="w-3 h-3 text-black" /> Consignor Full Name
+          <div className="space-y-4 pt-1">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-zinc-400" /> Consignor Full Name
               </label>
               <input
                 type="text"
                 required
                 placeholder="e.g., John Doe"
-                className="w-full px-3 py-1.5 border-2 border-black rounded-none text-xs focus:outline-none focus:bg-zinc-50 bg-white text-black font-semibold"
+                className="w-full px-3.5 py-2 border border-zinc-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-lego-blue bg-zinc-50/50 text-zinc-800 font-medium"
                 value={consignorName}
                 onChange={(e) => setConsignorName(e.target.value)}
                 id="contract-name"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-1">
-                <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-                  <Phone className="w-3 h-3 text-black" /> Phone Number
+            <div className="grid grid-cols-2 gap-3.5">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-zinc-400" /> Phone Number
                 </label>
                 <input
                   type="tel"
                   required
                   placeholder="555-0199"
-                  className="w-full px-3 py-1.5 border-2 border-black rounded-none text-xs focus:outline-none focus:bg-zinc-50 bg-white text-black font-semibold"
+                  className="w-full px-3.5 py-2 border border-zinc-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-lego-blue bg-zinc-50/50 text-zinc-800 font-medium"
                   value={consignorPhone}
                   onChange={(e) => setConsignorPhone(e.target.value)}
                   id="contract-phone"
                 />
               </div>
-              <div className="space-y-1">
-                <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-                  <Mail className="w-3 h-3 text-black" /> Email Address
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-zinc-400" /> Email Address
                 </label>
                 <input
                   type="email"
                   required
                   placeholder="john@example.com"
-                  className="w-full px-3 py-1.5 border-2 border-black rounded-none text-xs focus:outline-none focus:bg-zinc-50 bg-white text-black font-semibold"
+                  className="w-full px-3.5 py-2 border border-zinc-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-lego-blue bg-zinc-50/50 text-zinc-800 font-medium"
                   value={consignorEmail}
                   onChange={(e) => setConsignorEmail(e.target.value)}
                   id="contract-email"
@@ -102,14 +105,14 @@ export default function SafetyVault({
           </div>
 
           {/* Franchise Select */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-              <Store className="w-3 h-3 text-black" /> Consignment Location
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+              <Store className="w-3.5 h-3.5 text-zinc-400" /> Consignment Location
             </label>
             <select
               value={storeLocationId}
               onChange={(e) => setStoreLocationId(e.target.value)}
-              className="w-full px-2 py-1.5 bg-white border-2 border-black rounded-none text-xs focus:outline-none font-bold text-black"
+              className="w-full px-3 py-2 bg-white border border-zinc-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-lego-blue text-zinc-800 font-semibold"
               id="contract-store"
             >
               {STORE_LOCATIONS.map(store => (
@@ -121,31 +124,31 @@ export default function SafetyVault({
           </div>
 
           {/* Splits and terms */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-1">
-              <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-                <DollarSign className="w-3 h-3 text-black" /> Consignor Split (%)
+          <div className="grid grid-cols-2 gap-3.5">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <DollarSign className="w-3.5 h-3.5 text-zinc-400" /> Consignor Split (%)
               </label>
               <input
                 type="number"
                 min="1"
                 max="99"
-                className="w-full px-3 py-1.5 border-2 border-black rounded-none text-xs focus:outline-none bg-white text-black font-black font-mono"
+                className="w-full px-3.5 py-2 border border-zinc-200 rounded-lg text-xs focus:outline-none bg-white text-zinc-850 font-bold font-mono"
                 value={commissionSplit}
                 onChange={(e) => setCommissionSplit(parseInt(e.target.value) || 0)}
                 id="contract-split"
               />
-              <span className="text-[9px] text-zinc-500 font-bold block">Consignor payout percentage.</span>
+              <span className="text-[9px] text-zinc-400 font-normal block">Consignor payout ratio.</span>
             </div>
 
-            <div className="space-y-1">
-              <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-black" /> Reconciliation Interval
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-zinc-400" /> Reconciliation
               </label>
               <select
                 value={auditSchedule}
                 onChange={(e) => setAuditSchedule(e.target.value as any)}
-                className="w-full px-2 py-1.5 bg-white border-2 border-black rounded-none text-xs focus:outline-none font-bold text-black"
+                className="w-full px-3 py-2 bg-white border border-zinc-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-lego-blue text-zinc-800 font-semibold"
                 id="contract-audit"
               >
                 <option value="Bi-Weekly">Bi-Weekly Audits</option>
@@ -155,28 +158,28 @@ export default function SafetyVault({
             </div>
           </div>
 
-          <div className="space-y-1">
-            <label className="text-[11px] font-black text-black uppercase flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3 text-black" /> Insurance Floor Coverage ($)
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" /> Insurance Coverage Floor ($)
             </label>
             <input
               type="number"
               min="0"
               placeholder="e.g., 5000"
-              className="w-full px-3 py-1.5 border-2 border-black rounded-none text-xs focus:outline-none bg-white text-black font-black font-mono"
+              className="w-full px-3.5 py-2 border border-zinc-200 rounded-lg text-xs focus:outline-none bg-white text-zinc-850 font-bold font-mono"
               value={insuranceValueCap || ""}
               onChange={(e) => setInsuranceValueCap(parseInt(e.target.value) || 0)}
               id="contract-insurance"
             />
-            <span className="text-[9px] text-zinc-500 font-bold block">Min. coverage on store's property casualty policy.</span>
+            <span className="text-[9px] text-zinc-400 font-normal block">Minimum casualty protection covering retail premises.</span>
           </div>
 
           {/* Custom Terms text */}
-          <div className="space-y-1">
-            <label className="text-[11px] font-black text-black uppercase">Additional Custom Conditions</label>
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider">Additional Custom Clauses</label>
             <textarea
               placeholder="e.g., Unsold items must be packed and returned within 72 hours of written withdrawal."
-              className="w-full h-20 px-3 py-1.5 border-2 border-black rounded-none text-xs focus:outline-none bg-white text-black font-semibold resize-none"
+              className="w-full h-20 px-3.5 py-2 border border-zinc-200 rounded-lg text-xs focus:outline-none bg-white text-zinc-800 font-medium resize-none"
               value={customTerms}
               onChange={(e) => setCustomTerms(e.target.value)}
               id="contract-custom-terms"
@@ -184,15 +187,15 @@ export default function SafetyVault({
           </div>
 
           {/* Sync status based on Evaluator */}
-          <div className="p-3 bg-zinc-50 border-2 border-black rounded-none text-xs space-y-1">
-            <span className="font-black text-black block uppercase text-[10px] tracking-wider">Lego Inventory Synced</span>
+          <div className="p-4 bg-zinc-50 border border-zinc-200/50 rounded-xl text-xs space-y-1.5">
+            <span className="font-mono text-[9px] font-bold text-zinc-400 block uppercase tracking-wider">Lego Inventory Sync Status</span>
             {items.length === 0 ? (
-              <span className="text-zinc-600 font-semibold leading-relaxed block text-[11px]">
-                Your Trade Estimator list is empty. You can type sets directly into the draft, or go to the **Trade Estimator** tab to compile a synchronized inventory first.
+              <span className="text-zinc-500 font-normal leading-relaxed block text-[11px]">
+                Your Trade-In Valuator list is empty. You can compilation a synchronized inventory list in the **Trade-In Valuator** tab to automatically attach them here.
               </span>
             ) : (
-              <span className="text-emerald-700 font-black flex items-center gap-1 text-[11px]">
-                ✓ Successfully synchronized {items.length} items (Total: ${estimatedCollectionValue.toFixed(2)}) for attachment.
+              <span className="text-emerald-700 font-semibold flex items-center gap-1 text-[11px]">
+                ✓ Synced {items.length} items (Total: ${estimatedCollectionValue.toFixed(2)}) for attachment.
               </span>
             )}
           </div>
@@ -200,82 +203,82 @@ export default function SafetyVault({
           <button
             onClick={() => setPreviewActive(true)}
             disabled={!consignorName}
-            className={`w-full py-2.5 rounded-none text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+            className={`w-full py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm ${
               consignorName 
-                ? "bg-lego-red text-white border-2 border-black shadow-lego-sm hover:shadow-lego hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-y-0 active:shadow-none" 
-                : "bg-zinc-100 text-zinc-400 border-2 border-zinc-200 cursor-not-allowed"
+                ? "bg-lego-red text-white hover:bg-red-700 border-transparent" 
+                : "bg-zinc-100 text-zinc-400 cursor-not-allowed"
             }`}
             id="preview-contract-button"
           >
-            <Eye className="w-4 h-4" /> Preview Standard Agreement Draft
+            <Eye className="w-4 h-4" /> Preview Standard Agreement
           </button>
         </div>
 
         {/* Contract Preview Column */}
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-black text-zinc-500 uppercase tracking-wider">Printable Agreement Document</h3>
+            <h3 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">Interactive PDF Agreement Document</h3>
             {previewActive && (
               <button
                 onClick={handlePrint}
-                className="px-4 py-2 bg-lego-yellow text-black text-xs font-black uppercase border-2 border-black rounded-none flex items-center gap-1.5 shadow-lego-sm hover:shadow-lego hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-y-0 active:shadow-none transition-all cursor-pointer"
+                className="px-4 py-2 bg-white hover:bg-zinc-50 text-zinc-800 text-xs font-semibold rounded-lg border border-zinc-200 flex items-center gap-1.5 shadow-sm cursor-pointer transition-colors"
                 id="print-contract-button"
               >
-                <Printer className="w-4 h-4" /> Print / Save PDF Contract
+                <Printer className="w-4 h-4 text-zinc-500" /> Print / Save Contract PDF
               </button>
             )}
           </div>
 
           {/* Paper Mockup */}
           <div 
-            className="bg-white border-3 border-black shadow-lego p-8 sm:p-12 space-y-8 font-serif text-zinc-900 relative min-h-[600px] print:border-none print:shadow-none print:p-0"
+            className="bg-white border border-zinc-100 rounded-2xl shadow-lego p-8 sm:p-12 space-y-8 text-zinc-900 relative min-h-[600px] print:border-none print:shadow-none print:p-0"
             id="printable-contract-area"
           >
             {/* Header watermarks / clean details */}
-            <div className="border-b-4 border-black pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-2">
+            <div className="border-b-2 border-zinc-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-2">
               <div>
-                <h1 className="text-2xl font-black tracking-tight text-black font-sans uppercase">STANDARD CONSIGNMENT & BAILMENT CONTRACT</h1>
-                <p className="text-[10px] uppercase tracking-wider text-zinc-600 font-sans font-black mt-1">Bricks & Minifigs® Corporate Approved Template</p>
+                <h1 className="text-lg md:text-xl font-display font-bold tracking-tight text-zinc-900 uppercase">STANDARD CONSIGNMENT & BAILMENT AGREEMENT</h1>
+                <p className="text-[10px] uppercase tracking-wider text-amber-600 font-mono font-semibold mt-1">Bricks & Minifigs® Compliance Approved Document</p>
               </div>
-              <span className="text-xs font-mono text-black font-sans font-bold">Date: {new Date().toLocaleDateString()}</span>
+              <span className="text-xs font-mono text-zinc-500 font-medium">Date: {new Date().toLocaleDateString()}</span>
             </div>
 
             {previewActive ? (
-              <div className="space-y-6 text-xs leading-relaxed font-sans">
+              <div className="space-y-6 text-xs leading-relaxed font-sans text-zinc-700">
                 {/* Section 1: Parties */}
                 <div className="space-y-2">
-                  <h4 className="font-sans font-black text-black border-b-2 border-black pb-1 uppercase tracking-wider text-xs">1. Parties of the Agreement</h4>
-                  <p className="text-zinc-700 font-medium">
-                    This commercial bailment agreement is entered into on this day of <span className="underline font-black font-mono">{new Date().toLocaleDateString()}</span>, by and between the independent LEGO consignor and the retail franchise operator specified below:
+                  <h4 className="font-heading font-bold text-zinc-900 border-b border-zinc-100 pb-1 uppercase tracking-wider text-[11px]">1. Parties of the Agreement</h4>
+                  <p className="font-normal text-zinc-600">
+                    This commercial bailment and listing agreement is entered into on this day of <span className="underline font-semibold font-mono text-zinc-800">{new Date().toLocaleDateString()}</span>, by and between the independent LEGO consignor and the franchisee operator specified below:
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-zinc-50 p-3 rounded-none border-2 border-black font-sans text-[11px]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-zinc-50/50 p-4 rounded-xl border border-zinc-100 font-sans text-[11px] text-zinc-600">
                     <div className="space-y-1">
-                      <span className="font-black text-zinc-500 block uppercase text-[10px]">THE CONSIGNOR (Bailor):</span>
-                      <p className="font-black text-black">{consignorName || "Unspecified Consignor"}</p>
-                      <p className="text-zinc-700 font-medium">Phone: {consignorPhone || "None"}</p>
-                      <p className="text-zinc-700 font-medium">Email: {consignorEmail || "None"}</p>
+                      <span className="font-mono text-[9px] font-bold text-zinc-400 block uppercase">THE CONSIGNOR (Bailor):</span>
+                      <p className="font-bold text-zinc-900">{consignorName || "Unspecified Consignor"}</p>
+                      <p>Phone: {consignorPhone || "None"}</p>
+                      <p>Email: {consignorEmail || "None"}</p>
                     </div>
                     <div className="space-y-1">
-                      <span className="font-black text-zinc-500 block uppercase text-[10px]">THE FRANCHISEE (Bailee):</span>
-                      <p className="font-black text-black">{selectedStore?.name || "Unspecified Store"}</p>
-                      <p className="text-zinc-700 font-medium">Representative: Store Manager / Franchise Owner</p>
-                      <p className="text-zinc-700 font-medium">Address: {selectedStore?.city || "Unknown"}, {selectedStore?.state || ""}</p>
+                      <span className="font-mono text-[9px] font-bold text-zinc-400 block uppercase">THE FRANCHISEE (Bailee):</span>
+                      <p className="font-bold text-zinc-900">{selectedStore?.name || "Unspecified Store"}</p>
+                      <p>Representative: On-Duty Store Manager</p>
+                      <p>Address: {selectedStore?.city || "Unknown"}, {selectedStore?.state || ""}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Section 2: Core bailment & closure protections */}
-                <div className="space-y-2 text-justify">
-                  <h4 className="font-sans font-black text-black border-b-2 border-black pb-1 uppercase tracking-wider text-xs">2. Custody, Accountability & Safeguards</h4>
-                  <ul className="list-decimal pl-4 space-y-2 text-zinc-800 font-medium">
+                <div className="space-y-2 text-justify text-zinc-600">
+                  <h4 className="font-heading font-bold text-zinc-900 border-b border-zinc-100 pb-1 uppercase tracking-wider text-[11px]">2. Custody, Accountability & Safeguards</h4>
+                  <ul className="list-decimal pl-4 space-y-2 font-normal">
                     <li>
-                      <strong>Property Liability & Safety:</strong> The Franchisee accepts physical custody of the bailable assets listed in Schedule A. The Franchisee assumes full property responsibility and agrees to keep the items secured, dry, dust-free, and protected from theft, loss, or customer tampering.
+                      <strong>Property Liability & Safety:</strong> The Franchisee accepts commercial custody of the assets listed in Schedule A. The Franchisee assumes full property responsibility and agrees to keep the elements secured, dry, dust-free, and protected from theft or tampering.
                     </li>
                     <li>
                       <strong>Store Closure Notification Mandate:</strong> In order to mitigate consignment risks, the Franchisee is legally obligated to notify the Consignor in writing at least <strong>thirty (30) calendar days</strong> prior to any corporate restructure, store closure, lease termination, or bankruptcy filings. Upon receipt of notice, or immediately upon unnotified closure, the Consignor retains absolute title and immediate retrieval rights to all unsold assets.
                     </li>
                     <li>
-                      <strong>Property Casualty Insurance:</strong> The Franchisee certifies that they maintain a active commercial general liability policy with property casualty coverage of at least <strong>${insuranceValueCap}</strong> which covers third-party consigned items stored on retail premises.
+                      <strong>Property Casualty Insurance:</strong> The Franchisee certifies that they maintain an active commercial general liability policy with property casualty coverage of at least <strong>${insuranceValueCap}</strong> which covers third-party consigned items stored on retail premises.
                     </li>
                     <li>
                       <strong>Compulsory Reconciliation Audits:</strong> Both parties agree to a mandatory physical inventory check-off to be performed <strong>{auditSchedule}</strong>. The Franchisee will supply a visual checklist confirming the presence and status of all unsold assets.
@@ -289,8 +292,8 @@ export default function SafetyVault({
                 {/* Section 3: Custom Terms if any */}
                 {customTerms && (
                   <div className="space-y-2">
-                    <h4 className="font-sans font-black text-black border-b-2 border-black pb-1 uppercase tracking-wider text-xs">3. Custom Agreements & Amendments</h4>
-                    <p className="bg-zinc-50 p-3 border-2 border-black text-[11px] text-zinc-800 font-mono italic">
+                    <h4 className="font-heading font-bold text-zinc-900 border-b border-zinc-100 pb-1 uppercase tracking-wider text-[11px]">3. Custom Agreements & Amendments</h4>
+                    <p className="bg-zinc-50 p-3.5 rounded-lg border border-zinc-100 text-[11px] text-zinc-700 font-mono italic">
                       {customTerms}
                     </p>
                   </div>
@@ -298,32 +301,32 @@ export default function SafetyVault({
 
                 {/* Section 4: Schedule A inventory attachment */}
                 <div className="space-y-2">
-                  <h4 className="font-sans font-black text-black border-b-2 border-black pb-1 uppercase tracking-wider text-xs">Schedule A: Consigned Asset Inventory</h4>
+                  <h4 className="font-heading font-bold text-zinc-900 border-b border-zinc-100 pb-1 uppercase tracking-wider text-[11px]">Schedule A: Consigned Asset Inventory</h4>
                   {items.length === 0 ? (
-                    <p className="text-zinc-500 italic">No assets listed. Store inventory checklist must be hand-drafted below upon drop-off.</p>
+                    <p className="text-zinc-400 italic font-normal">No assets attached. Store inventory checklist must be hand-drafted below upon physical drop-off.</p>
                   ) : (
-                    <div className="border-2 border-black overflow-hidden font-sans text-[10px]">
+                    <div className="border border-zinc-200 rounded-xl overflow-hidden font-sans text-[10px]">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="bg-zinc-100 border-b-2 border-black text-black font-black uppercase">
-                            <th className="p-2">Description / Name</th>
-                            <th className="p-2">Type</th>
-                            <th className="p-2">Condition</th>
-                            <th className="p-2 text-right">Est. Value</th>
+                          <tr className="bg-zinc-50 border-b border-zinc-200 text-zinc-700 font-semibold uppercase">
+                            <th className="p-2.5">Description / Name</th>
+                            <th className="p-2.5">Type</th>
+                            <th className="p-2.5">Condition</th>
+                            <th className="p-2.5 text-right">Est. Value</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-zinc-300 text-zinc-800 font-semibold">
+                        <tbody className="divide-y divide-zinc-100 text-zinc-600">
                           {items.map((item, index) => (
-                            <tr key={index} className="bg-white hover:bg-zinc-50">
-                              <td className="p-2 font-black text-black">{item.name}</td>
-                              <td className="p-2 capitalize">{item.type}</td>
-                              <td className="p-2">{item.condition}</td>
-                              <td className="p-2 text-right font-mono font-bold text-black">${item.retailValue.toFixed(0)}</td>
+                            <tr key={index} className="bg-white hover:bg-zinc-50/50">
+                              <td className="p-2.5 font-semibold text-zinc-900">{item.name}</td>
+                              <td className="p-2.5 capitalize">{item.type}</td>
+                              <td className="p-2.5">{item.condition}</td>
+                              <td className="p-2.5 text-right font-mono font-bold text-zinc-900">${item.retailValue.toFixed(0)}</td>
                             </tr>
                           ))}
-                          <tr className="bg-zinc-100 font-black border-t-2 border-black text-black">
-                            <td colSpan={3} className="p-2 text-right">Estimated Combined Consignment Value:</td>
-                            <td className="p-2 text-right font-mono font-black">${estimatedCollectionValue.toFixed(0)}</td>
+                          <tr className="bg-zinc-50/50 font-semibold border-t border-zinc-200 text-zinc-900">
+                            <td colSpan={3} className="p-2.5 text-right font-medium text-zinc-500">Estimated Combined Consignment Value:</td>
+                            <td className="p-2.5 text-right font-mono font-bold text-amber-600">${estimatedCollectionValue.toFixed(0)}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -334,29 +337,29 @@ export default function SafetyVault({
                 {/* Signatures */}
                 <div className="pt-8 grid grid-cols-2 gap-8 font-sans">
                   <div className="space-y-4">
-                    <span className="text-[10px] text-zinc-500 block uppercase font-black tracking-wider">CONSIGNOR SIGNATURE:</span>
-                    <div className="border-b-2 border-black h-10 w-full" />
-                    <div className="text-[10px] text-zinc-700 font-bold">
-                      <p className="font-black text-black">{consignorName}</p>
+                    <span className="text-[9px] font-mono font-bold text-zinc-400 block uppercase tracking-wider">CONSIGNOR SIGNATURE:</span>
+                    <div className="border-b border-zinc-300 h-10 w-full" />
+                    <div className="text-[10px] text-zinc-500">
+                      <p className="font-semibold text-zinc-800">{consignorName}</p>
                       <p>Date: __________________</p>
                     </div>
                   </div>
                   <div className="space-y-4">
-                    <span className="text-[10px] text-zinc-500 block uppercase font-black tracking-wider">FRANCHISEE OWNER SIGNATURE:</span>
-                    <div className="border-b-2 border-black h-10 w-full" />
-                    <div className="text-[10px] text-zinc-700 font-bold">
-                      <p className="font-black text-black">{selectedStore?.name}</p>
+                    <span className="text-[9px] font-mono font-bold text-zinc-400 block uppercase tracking-wider">FRANCHISEE OWNER SIGNATURE:</span>
+                    <div className="border-b border-zinc-300 h-10 w-full" />
+                    <div className="text-[10px] text-zinc-500">
+                      <p className="font-semibold text-zinc-800">{selectedStore?.name}</p>
                       <p>Date: __________________</p>
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center py-24 text-center space-y-4 font-sans border-3 border-dashed border-zinc-300 rounded-none bg-zinc-50">
-                <Shield className="w-12 h-12 text-zinc-400" />
-                <div className="space-y-1 max-w-sm px-4">
-                  <h4 className="text-sm font-black uppercase text-black">Agreement Draft Pending</h4>
-                  <p className="text-xs text-zinc-600 font-medium leading-relaxed">
+              <div className="flex flex-col items-center justify-center py-24 text-center space-y-4 font-sans border border-dashed border-zinc-200 rounded-xl bg-zinc-50">
+                <Shield className="w-10 h-10 text-zinc-300" />
+                <div className="space-y-1.5 max-w-sm px-4">
+                  <h4 className="text-sm font-semibold uppercase text-zinc-800">Draft Agreement Pending</h4>
+                  <p className="text-xs text-zinc-500 font-normal leading-relaxed">
                     Please provide your **Consignor Full Name** and contact details on the left parameters panel to compile your standard consignment contract.
                   </p>
                 </div>

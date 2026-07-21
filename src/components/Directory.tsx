@@ -57,27 +57,27 @@ export default function Directory({
     });
   }, [searchTerm, selectedState, selectedSource]);
 
-  const getTierColor = (tier: string) => {
+  const getTierColorClass = (tier: string) => {
     switch (tier) {
       case "Highly Trusted":
-        return "bg-emerald-600 text-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]";
+        return "bg-emerald-50 text-emerald-800 border-emerald-200/60";
       case "Proceed with Caution":
-        return "bg-lego-yellow text-black border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]";
+        return "bg-amber-50 text-amber-800 border-amber-200/60";
       case "Flagged / Closed":
-        return "bg-lego-red text-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]";
+        return "bg-rose-50 text-rose-800 border-rose-200/60";
       default:
-        return "bg-white text-black border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]";
+        return "bg-zinc-50 text-zinc-800 border-zinc-200";
     }
   };
 
   const getTierIcon = (tier: string) => {
     switch (tier) {
       case "Highly Trusted":
-        return <ShieldCheck className="w-4 h-4 text-white mr-1.5" />;
+        return <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 mr-1.5" />;
       case "Proceed with Caution":
-        return <AlertTriangle className="w-4 h-4 text-black mr-1.5" />;
+        return <AlertTriangle className="w-3.5 h-3.5 text-amber-700 mr-1.5" />;
       case "Flagged / Closed":
-        return <AlertCircle className="w-4 h-4 text-white mr-1.5" />;
+        return <AlertCircle className="w-3.5 h-3.5 text-rose-700 mr-1.5" />;
       default:
         return null;
     }
@@ -90,77 +90,80 @@ export default function Directory({
   };
 
   return (
-    <div className="space-y-8" id="store-directory">
+    <div className="space-y-10" id="store-directory">
       {/* Background Statement Block (Objective, transparent, clean) */}
-      <div className="p-6 bg-white border-3 border-black shadow-lego rounded-none space-y-4 max-w-4xl">
+      <div className="p-6 bg-white border border-zinc-100 rounded-2xl shadow-lego max-w-4xl">
         <div className="flex items-start gap-4">
-          <div className="p-2 bg-lego-blue border-2 border-black shadow-lego-sm rounded-none shrink-0 text-white">
-            <Store className="w-6 h-6 text-white shrink-0" />
+          <div className="p-2.5 bg-zinc-50 border border-zinc-200 rounded-xl shrink-0 text-lego-blue">
+            <Store className="w-6 h-6 text-lego-blue shrink-0" />
           </div>
           <div className="space-y-2">
-            <h2 className="text-sm font-black text-white tracking-wider uppercase bg-lego-blue px-2 py-0.5 inline-block border-2 border-black shadow-lego-sm">
-              Official Store Locator & Yelp Reviews Tracker
+            <h2 className="text-xs font-mono font-bold text-amber-600 tracking-wider uppercase">
+              Operational Accountability Directory
             </h2>
-            <p className="text-xs text-black font-medium leading-relaxed pt-2">
-              Bricks & Minifigs® operates on a national franchise network where each location is independently owned and operated. To ensure total transparency and customer success, we track local store ratings, owner management names, and audited Yelp/Trustindex feedback.
+            <h3 className="text-xl font-display font-semibold text-zinc-900 tracking-tight">
+              Independent Franchise Verification & Reviews
+            </h3>
+            <p className="text-xs text-zinc-600 font-normal leading-relaxed">
+              Bricks & Minifigs® outlets are independently owned and managed. To ensure operational integrity and absolute clarity, we track rating matrices, on-site policy adherence, and certified customer reviews. 
             </p>
-            <p className="text-xs text-black font-medium leading-relaxed">
-              Use this locator to explore national outlets, search for trusted local operators (such as Ryans, Chris, Gary, and Holly), and review individual store policy ratings. Select any location to link it to your custom trade estimators or consignment forms.
+            <p className="text-xs text-zinc-500 font-normal leading-relaxed">
+              Select an active store location below to link it automatically with your trade estimators or consignment vaults.
             </p>
           </div>
         </div>
       </div>
 
       {/* Directory Search & Filter Controls */}
-      <div className="bg-white border-3 border-black shadow-lego rounded-none p-5 space-y-4">
+      <div className="bg-white border border-zinc-100 rounded-2xl shadow-lego p-6 space-y-4">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="relative w-full md:max-w-md">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-black" />
+            <Search className="absolute left-3.5 top-3 h-4 w-4 text-zinc-400" />
             <input
               type="text"
-              placeholder="Search store name, city, state, or key terms..."
-              className="w-full pl-9 pr-4 py-2 border-2 border-black rounded-none text-xs font-bold focus:outline-none focus:bg-white bg-zinc-50"
+              placeholder="Search by store name, city, owner, or policy notes..."
+              className="w-full pl-10 pr-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none focus:bg-white focus:ring-1 focus:ring-lego-blue transition-colors text-zinc-800"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               id="directory-search"
             />
           </div>
 
-          <div className="flex flex-wrap gap-2 w-full md:w-auto">
+          <div className="flex bg-zinc-100 p-1 rounded-lg gap-1.5 w-full md:w-auto">
             {/* Tab selection */}
             <button
               onClick={() => { setActiveTab("stores"); }}
-              className={`px-4 py-2 rounded-none text-xs font-black uppercase tracking-wider border-2 border-black transition-all cursor-pointer ${
+              className={`flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer text-center whitespace-nowrap ${
                 activeTab === "stores"
-                  ? "bg-lego-blue text-white shadow-lego-sm translate-x-[-1px] translate-y-[-1px]"
-                  : "bg-white text-black hover:bg-zinc-100 active:translate-y-0"
+                  ? "bg-white text-lego-blue shadow-sm"
+                  : "text-zinc-600 hover:text-zinc-900"
               }`}
               id="tab-stores"
             >
-              Store Locator ({filteredStores.length})
+              Stores ({filteredStores.length})
             </button>
             <button
               onClick={() => { setActiveTab("reviews"); }}
-              className={`px-4 py-2 rounded-none text-xs font-black uppercase tracking-wider border-2 border-black transition-all cursor-pointer ${
+              className={`flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer text-center whitespace-nowrap ${
                 activeTab === "reviews"
-                  ? "bg-lego-red text-white shadow-lego-sm translate-x-[-1px] translate-y-[-1px]"
-                  : "bg-white text-black hover:bg-zinc-100 active:translate-y-0"
+                  ? "bg-white text-lego-red shadow-sm"
+                  : "text-zinc-600 hover:text-zinc-900"
               }`}
               id="tab-reviews"
             >
-              Audited Yelp & Community Reviews ({filteredReviews.length})
+              Yelp Reviews ({filteredReviews.length})
             </button>
           </div>
         </div>
 
         {/* Inline Filters */}
-        <div className="flex flex-wrap gap-3 pt-3 border-t-2 border-black text-xs font-bold">
+        <div className="flex flex-wrap gap-4 pt-4 border-t border-zinc-100 text-xs font-medium items-center">
           <div className="flex items-center gap-2">
-            <span className="text-black uppercase tracking-wider text-[11px]">State:</span>
+            <span className="text-zinc-400 font-mono text-[10px] uppercase tracking-wider">State:</span>
             <select
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
-              className="px-2 py-1 bg-white border-2 border-black rounded-none text-xs font-bold focus:outline-none"
+              className="px-2.5 py-1.5 bg-white border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none"
               id="filter-state"
             >
               {states.map(state => (
@@ -171,11 +174,11 @@ export default function Directory({
 
           {activeTab === "stores" ? (
             <div className="flex items-center gap-2">
-              <span className="text-black uppercase tracking-wider text-[11px]">Audit Status:</span>
+              <span className="text-zinc-400 font-mono text-[10px] uppercase tracking-wider">Policy Audit Status:</span>
               <select
                 value={selectedTier}
                 onChange={(e) => setSelectedTier(e.target.value)}
-                className="px-2 py-1 bg-white border-2 border-black rounded-none text-xs font-bold focus:outline-none"
+                className="px-2.5 py-1.5 bg-white border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none"
                 id="filter-tier"
               >
                 <option value="All Tiers">All Policy Statuses</option>
@@ -186,11 +189,11 @@ export default function Directory({
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <span className="text-black uppercase tracking-wider text-[11px]">Review Origin:</span>
+              <span className="text-zinc-400 font-mono text-[10px] uppercase tracking-wider">Review Origin:</span>
               <select
                 value={selectedSource}
                 onChange={(e) => setSelectedSource(e.target.value)}
-                className="px-2 py-1 bg-white border-2 border-black rounded-none text-xs font-bold focus:outline-none"
+                className="px-2.5 py-1.5 bg-white border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none"
                 id="filter-source"
               >
                 <option value="All Sources">All Outlets</option>
@@ -208,10 +211,10 @@ export default function Directory({
                 setSelectedTier("All Tiers");
                 setSelectedSource("All Sources");
               }}
-              className="text-lego-red hover:underline font-black uppercase tracking-wider text-[11px] ml-auto cursor-pointer"
+              className="text-lego-red hover:text-red-700 font-semibold uppercase tracking-wider text-[11px] ml-auto cursor-pointer"
               id="reset-filters"
             >
-              Clear Filters
+              Reset Filters
             </button>
           )}
         </div>
@@ -221,8 +224,8 @@ export default function Directory({
       {activeTab === "stores" ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="stores-grid">
           {filteredStores.length === 0 ? (
-            <div className="col-span-2 text-center py-12 border-3 border-dashed border-black rounded-none bg-zinc-50">
-              <p className="text-zinc-700 font-bold text-sm">No locations matching your search terms found.</p>
+            <div className="col-span-2 text-center py-12 border border-dashed border-zinc-200 rounded-xl bg-zinc-50">
+              <p className="text-zinc-500 font-normal text-sm">No store locations match your query.</p>
             </div>
           ) : (
             filteredStores.map((store) => {
@@ -233,75 +236,75 @@ export default function Directory({
               return (
                 <div 
                   key={store.id} 
-                  className={`border-3 border-black bg-white rounded-none flex flex-col justify-between transition-all shadow-lego hover:shadow-lego-lg hover:translate-x-[-2px] hover:translate-y-[-2px] ${
-                    isClosed ? "opacity-85 bg-rose-50/10" : ""
-                  } ${isSelected ? "ring-4 ring-lego-blue" : ""}`}
+                  className={`border rounded-2xl bg-white flex flex-col justify-between transition-all duration-200 shadow-lego hover:border-zinc-300 ${
+                    isClosed ? "opacity-90 bg-rose-50/5 border-rose-200/40" : "border-zinc-100"
+                  } ${isSelected ? "ring-2 ring-lego-blue/80 border-transparent" : ""}`}
                   id={`store-card-${store.id}`}
                 >
-                  <div className="p-5 space-y-4">
+                  <div className="p-6 space-y-4">
                     {/* Badge & Rating Row */}
                     <div className="flex items-center justify-between">
-                      <span className={`inline-flex items-center px-2 py-1 rounded-none text-[10px] font-black uppercase tracking-wider ${getTierColor(store.trustTier)}`}>
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border ${getTierColorClass(store.trustTier)}`}>
                         {getTierIcon(store.trustTier)}
-                        {store.trustTier === "Highly Trusted" ? "Highly Trusted" : store.trustTier === "Proceed with Caution" ? "Audit / Reforms Required" : "Revoked / Closed"}
+                        {store.trustTier === "Highly Trusted" ? "Highly Trusted" : store.trustTier === "Proceed with Caution" ? "Audit Required" : "Revoked / Closed"}
                       </span>
-                      <div className="flex items-center gap-1.5 bg-zinc-100 border-2 border-black px-2 py-0.5 shadow-[1px_1px_0px_rgba(0,0,0,1)] text-xs font-black">
-                        <Star className="w-3.5 h-3.5 fill-amber-400 text-black shrink-0" />
-                        <span className="text-black">{store.overallRating.toFixed(1)}</span>
-                        <span className="text-[10px] text-zinc-600">({store.totalReviews})</span>
+                      <div className="flex items-center gap-1 bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-0.5 text-xs font-bold text-zinc-900">
+                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500 shrink-0" />
+                        <span>{store.overallRating.toFixed(1)}</span>
+                        <span className="text-[10px] text-zinc-400 font-normal">({store.totalReviews})</span>
                       </div>
                     </div>
 
                     {/* Store Title */}
                     <div>
-                      <h3 className="text-base font-black text-black flex items-center gap-1.5 leading-tight uppercase tracking-wide">
+                      <h3 className="text-base font-heading font-bold text-zinc-900 flex items-center gap-1.5 leading-snug">
                         {store.name}
                       </h3>
-                      <p className="text-xs text-zinc-700 font-bold flex items-center gap-1 mt-1 font-mono">
-                        <MapPin className="w-3.5 h-3.5 text-black" />
+                      <p className="text-xs text-zinc-500 font-normal flex items-center gap-1 mt-1">
+                        <MapPin className="w-3.5 h-3.5 text-zinc-400" />
                         {store.city}, {store.state}
                       </p>
                     </div>
 
                     {/* Operational Details */}
-                    <div className="space-y-3 pt-3 border-t-2 border-black text-xs">
+                    <div className="space-y-3 pt-4 border-t border-zinc-100 text-xs">
                       <div>
-                        <span className="font-black text-black uppercase tracking-wider text-[10px] bg-lego-yellow/20 px-1.5 py-0.5 border border-black inline-block">Management / Franchise Owner:</span>{" "}
-                        <span className="text-zinc-900 font-bold block mt-1">{store.management}</span>
+                        <span className="font-mono text-[9px] uppercase text-zinc-400 tracking-wider block mb-1">Franchise Management</span>
+                        <span className="text-zinc-800 font-semibold">{store.management}</span>
                       </div>
                       <div>
-                        <span className="font-black text-black uppercase tracking-wider text-[10px] bg-lego-blue/10 px-1.5 py-0.5 border border-black inline-block">Policy Status & Audits:</span>{" "}
-                        <p className="text-zinc-800 font-semibold leading-relaxed mt-1.5">{store.notableNotes}</p>
+                        <span className="font-mono text-[9px] uppercase text-zinc-400 tracking-wider block mb-1">Store Directives & Policy</span>
+                        <p className="text-zinc-600 font-normal leading-relaxed text-[11px]">{store.notableNotes}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Action block */}
-                  <div className="px-5 py-3.5 bg-zinc-50 border-t-2 border-black flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs border-black">
-                    <span className="text-black font-bold">
-                      Customer Reviews: <strong className="text-lego-blue">{storeReviews.length} tracked</strong>
+                  <div className="px-6 py-4 bg-zinc-50/50 border-t border-zinc-100 rounded-b-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                    <span className="text-zinc-500 text-[11px]">
+                      Audited Reviews: <strong className="text-lego-blue font-semibold">{storeReviews.length}</strong>
                     </span>
                     <div className="flex gap-2">
                       <button 
                         onClick={() => handleStoreClick(store.id)}
-                        className={`text-xs font-black uppercase border-2 border-black px-2.5 py-1 shadow-lego-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-lego transition-all cursor-pointer ${
+                        className={`text-xs font-semibold px-3.5 py-1.5 rounded-lg border transition-all cursor-pointer ${
                           isSelected 
-                            ? "bg-lego-blue text-white" 
-                            : "bg-white text-black hover:bg-lego-yellow"
+                            ? "bg-lego-blue text-white border-transparent shadow-sm" 
+                            : "bg-white text-zinc-800 border-zinc-200 hover:bg-zinc-50"
                         }`}
                         id={`select-store-action-${store.id}`}
                       >
-                        {isSelected ? "✓ Active Store" : "Select Store"}
+                        {isSelected ? "Active Store" : "Select Store"}
                       </button>
                       <button 
                         onClick={() => {
                           setSearchTerm(store.name);
                           setActiveTab("reviews");
                         }}
-                        className="text-black hover:text-lego-red font-black uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors bg-white border-2 border-black px-2.5 py-1 shadow-lego-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-lego hover:bg-zinc-100"
+                        className="text-zinc-700 hover:text-lego-red font-semibold flex items-center gap-1 cursor-pointer transition-colors bg-white border border-zinc-200 rounded-lg px-3.5 py-1.5 hover:bg-zinc-50"
                         id={`view-reviews-${store.id}`}
                       >
-                        Yelp Reviews <ExternalLink className="w-3.5 h-3.5 text-black" />
+                        Yelp Reviews <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                       </button>
                     </div>
                   </div>
@@ -313,8 +316,8 @@ export default function Directory({
       ) : (
         <div className="space-y-6" id="reviews-list">
           {filteredReviews.length === 0 ? (
-            <div className="text-center py-12 border-3 border-dashed border-black rounded-none bg-zinc-50">
-              <p className="text-zinc-700 font-bold text-sm">No reviews matching your search criteria found.</p>
+            <div className="text-center py-12 border border-dashed border-zinc-200 rounded-xl bg-zinc-50">
+              <p className="text-zinc-500 font-normal text-sm">No community feedback matches your filter.</p>
             </div>
           ) : (
             filteredReviews.map((review, idx) => {
@@ -322,39 +325,39 @@ export default function Directory({
               return (
                 <div 
                   key={idx} 
-                  className={`border-3 border-black bg-white p-5 space-y-4 shadow-lego hover:shadow-lego-lg hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all rounded-none ${
-                    review.isCritical ? "border-black bg-white" : "border-black bg-emerald-50/10"
+                  className={`border rounded-2xl bg-white p-6 space-y-4 shadow-lego transition-all duration-200 ${
+                    review.isCritical ? "border-amber-200 bg-amber-50/10" : "border-zinc-100 bg-white"
                   }`}
                   id={`review-item-${idx}`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-100 pb-4">
                     {/* Review Author Metadata */}
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-black text-black uppercase tracking-wide">{review.author}</span>
-                        <span className="text-[10px] text-black bg-lego-yellow border border-black font-mono font-bold px-1.5 py-0.5 shadow-[1px_1px_0px_rgba(0,0,0,1)]">
+                        <span className="text-xs font-semibold text-zinc-900">{review.author}</span>
+                        <span className="text-[10px] text-zinc-500 bg-zinc-50 border border-zinc-200 rounded px-2 py-0.5 font-mono">
                           {review.location}
                         </span>
                       </div>
-                      <span className="text-[10px] text-zinc-600 font-mono mt-1 block font-semibold">{review.date}</span>
+                      <span className="text-[10px] text-zinc-400 font-mono mt-1 block font-normal">{review.date}</span>
                     </div>
 
                     {/* Rating and Source */}
                     <div className="flex items-center gap-3">
-                      <div className="flex bg-zinc-100 border border-black p-1 shadow-[1px_1px_0px_rgba(0,0,0,1)]">
+                      <div className="flex bg-zinc-50 border border-zinc-200 rounded-lg p-1">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star 
                             key={i} 
                             className={`w-3.5 h-3.5 ${
                               i < review.rating 
-                                ? "fill-amber-400 text-black" 
-                                : "text-zinc-300"
+                                ? "fill-amber-400 text-amber-500" 
+                                : "text-zinc-200"
                             }`} 
                           />
                         ))}
                       </div>
-                      <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-0.5 border-2 border-black shadow-[1px_1px_0px_rgba(0,0,0,1)] ${
-                        review.source === "Yelp" ? "bg-lego-red text-white" : "bg-lego-blue text-white"
+                      <span className={`text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded border shadow-sm ${
+                        review.source === "Yelp" ? "bg-rose-50 text-rose-700 border-rose-150" : "bg-sky-50 text-sky-700 border-sky-150"
                       }`}>
                         {review.source}
                       </span>
@@ -362,25 +365,25 @@ export default function Directory({
                   </div>
 
                   {/* Review Text Body */}
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {store && (
-                      <div className="text-[11px] text-zinc-700 flex items-center gap-1 font-bold">
-                        <span>For location:</span>
-                        <span className="underline decoration-black decoration-2">{store.name} ({store.city}, {store.state})</span>
+                      <div className="text-[11px] text-zinc-500 flex items-center gap-1 font-normal">
+                        <span>Concerning Outlet:</span>
+                        <span className="font-semibold text-zinc-800">{store.name} ({store.city}, {store.state})</span>
                       </div>
                     )}
-                    <p className="text-xs text-black leading-relaxed font-semibold italic bg-zinc-50 p-3 border border-black shadow-[1px_1px_0px_rgba(0,0,0,1)]">
+                    <p className="text-sm text-zinc-700 leading-relaxed font-normal italic bg-zinc-50/50 p-4 rounded-xl border border-zinc-200/50">
                       &ldquo;{review.text}&rdquo;
                     </p>
                   </div>
 
                   {/* Operational Security takeaway based on review */}
                   {review.isCritical && (
-                    <div className="flex items-start gap-3 bg-lego-yellow border-2 border-black p-3 text-[11px] text-black shadow-lego-sm font-bold">
-                      <ShieldAlert className="w-5 h-5 text-black shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-amber-50/70 border border-amber-200/70 rounded-xl p-4 text-[11px] text-zinc-700">
+                      <ShieldAlert className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
                       <div>
-                        <strong className="uppercase tracking-wide text-xs block mb-1">Franchise Customer Care Note:</strong>
-                        This review indicates potential complaints regarding trade valuations, contract defaults, or service delays at this individual location. If you plan to consign or trade high-value LEGO collections with this store, we strongly advise using our online <strong className="underline">Consignment Planner</strong> to generate standardized, binding commercial inventory drafts prior to drop-off.
+                        <strong className="uppercase font-mono tracking-wider text-[10px] text-amber-800 block mb-1">Franchise Customer Directive:</strong>
+                        This report notes substantial consumer complaints regarding trade evaluation ratios, contract compliance, or payout delays. For high-value collection transfers or consignment at this location, builders are strongly encouraged to draft a certified <strong className="font-semibold text-amber-900 underline cursor-pointer">Consignment Contract</strong> inside the Safety Vault prior to physical box turnover.
                       </div>
                     </div>
                   )}

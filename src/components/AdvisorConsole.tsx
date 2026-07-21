@@ -6,7 +6,7 @@ import { Shield, Sparkles, Send, ShieldAlert, BookOpen, RefreshCw, AlertCircle }
 export default function AdvisorConsole({ 
   items,
   storeLocationId
-}: { 
+ }: { 
   items: EvaluatorItem[];
   storeLocationId: string;
 }) {
@@ -108,33 +108,34 @@ export default function AdvisorConsole({
   return (
     <div className="space-y-6" id="advisor-console-tab">
       {/* Risk Alert Eyebrow statement */}
-      <div className="p-4 bg-zinc-900 text-white border-3 border-black rounded-none flex items-start gap-2.5 max-w-4xl text-xs shadow-lego">
-        <ShieldAlert className="w-5 h-5 text-lego-yellow shrink-0 mt-0.5" />
-        <div className="font-semibold leading-relaxed">
-          <span className="font-black text-lego-yellow uppercase tracking-wider block mb-0.5 text-[11px]">Secure Audit Gateway:</span> This advisor routes through a secure backend proxy. All AI audits utilize the modern <code className="bg-zinc-800 text-lego-yellow px-1.5 py-0.5 rounded-none border border-zinc-700 font-mono text-[10px]">gemini-2.5-flash</code> model to provide verified secondary market appraisals and legal bailment advice. No personal names or credentials are sent to external networks.
+      <div className="p-4 bg-zinc-900 text-zinc-100 rounded-xl flex items-start gap-3 max-w-4xl text-xs shadow-sm">
+        <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+        <div className="leading-relaxed font-sans font-normal">
+          <span className="font-mono text-[10px] font-bold text-amber-500 uppercase tracking-widest block mb-0.5">Secure AI Audit Gateway</span>
+          This advisor routes through a secure backend proxy. All AI audits utilize the modern <code className="bg-zinc-800 text-emerald-400 px-1.5 py-0.5 rounded font-mono text-[10px]">gemini-2.5-flash</code> model to provide verified secondary market appraisals and legal bailment advice. No personal names or credentials are sent to external networks.
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Quick Audits Control Box */}
-        <div className="lg:col-span-4 bg-white border-3 border-black rounded-none p-5 space-y-4 shadow-lego">
-          <h3 className="text-xs font-black text-black uppercase pb-2 border-b-2 border-black flex items-center gap-1.5">
-            <BookOpen className="w-4 h-4 text-lego-red" />
+        <div className="lg:col-span-4 bg-white border border-zinc-100 rounded-2xl p-6 space-y-4 shadow-lego">
+          <h3 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider pb-3 border-b border-zinc-100 flex items-center gap-1.5">
+            <BookOpen className="w-4 h-4 text-zinc-500" />
             Quick AI Audits
           </h3>
 
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             {/* Action 1 */}
             <button
               onClick={handleTriggerAppraisal}
               disabled={loading}
-              className="w-full text-left p-3.5 border-2 border-black bg-white hover:bg-lego-yellow hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-lego transition-all text-xs space-y-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-lego-sm rounded-none group"
+              className="w-full text-left p-4 border border-zinc-200/60 hover:border-zinc-350 bg-zinc-50/30 hover:bg-zinc-50 rounded-xl transition-all text-xs space-y-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
               id="btn-ai-appraise"
             >
-              <div className="flex items-center gap-1.5 font-black text-black group-hover:text-black">
-                <Sparkles className="w-4 h-4 text-lego-red fill-lego-red" /> Appraise My Trade List
+              <div className="flex items-center gap-1.5 font-heading font-semibold text-zinc-900 group-hover:text-lego-blue">
+                <Sparkles className="w-4 h-4 text-amber-500 fill-amber-500/10" /> Appraise My Trade List
               </div>
-              <p className="text-zinc-600 font-semibold leading-relaxed">
+              <p className="text-zinc-500 font-normal leading-relaxed text-[11px]">
                 Send your current trade list to Gemini to calculate fair market values and get specific preparation tips to increase offers.
               </p>
             </button>
@@ -143,21 +144,21 @@ export default function AdvisorConsole({
             <button
               onClick={handleTriggerRiskConsult}
               disabled={loading}
-              className="w-full text-left p-3.5 border-2 border-black bg-white hover:bg-lego-yellow hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-lego transition-all text-xs space-y-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-lego-sm rounded-none group"
+              className="w-full text-left p-4 border border-zinc-200/60 hover:border-zinc-350 bg-zinc-50/30 hover:bg-zinc-50 rounded-xl transition-all text-xs space-y-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
               id="btn-ai-risk"
             >
-              <div className="flex items-center gap-1.5 font-black text-black group-hover:text-black">
-                <Shield className="w-4 h-4 text-black" /> Consignment Risk Audit
+              <div className="flex items-center gap-1.5 font-heading font-semibold text-zinc-900 group-hover:text-lego-blue">
+                <Shield className="w-4 h-4 text-zinc-600" /> Consignment Risk Audit
               </div>
-              <p className="text-zinc-600 font-semibold leading-relaxed">
-                Analyze contract safety for <strong className="text-black font-black">{selectedStore ? selectedStore.name : "Selected Location"}</strong>. Highlights liability, closing notices, and audit schedules.
+              <p className="text-zinc-500 font-normal leading-relaxed text-[11px]">
+                Analyze contract safety for <strong className="text-zinc-800 font-bold">{selectedStore ? selectedStore.name : "Selected Location"}</strong>. Highlights liability, closing notices, and audit schedules.
               </p>
             </button>
           </div>
         </div>
 
         {/* Chat / Feed Column */}
-        <div className="lg:col-span-8 bg-white border-3 border-black rounded-none overflow-hidden flex flex-col justify-between h-[520px] shadow-lego" id="advisor-chat-panel">
+        <div className="lg:col-span-8 bg-white border border-zinc-100 rounded-2xl overflow-hidden flex flex-col justify-between h-[520px] shadow-lego" id="advisor-chat-panel">
           {/* Messages stream */}
           <div className="p-5 overflow-y-auto space-y-4 flex-1 text-xs">
             {messages.map((msg, index) => (
@@ -169,17 +170,17 @@ export default function AdvisorConsole({
                 id={`chat-msg-${index}`}
               >
                 {/* Avatar */}
-                <div className={`w-6 h-6 border-2 border-black rounded-none flex items-center justify-center shrink-0 text-[10px] font-black ${
-                  msg.sender === "user" ? "bg-black text-white" : "bg-lego-yellow text-black"
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-[9px] font-mono font-bold tracking-wider ${
+                  msg.sender === "user" ? "bg-zinc-800 text-white" : "bg-lego-blue text-white"
                 }`}>
                   {msg.sender === "user" ? "ME" : "AI"}
                 </div>
 
                 {/* Message Box */}
-                <div className={`p-4 border-2 border-black rounded-none leading-relaxed whitespace-pre-wrap ${
+                <div className={`p-4 rounded-2xl leading-relaxed whitespace-pre-wrap text-zinc-700 text-xs font-normal ${
                   msg.sender === "user" 
-                    ? "bg-lego-blue text-white shadow-lego-sm" 
-                    : "bg-zinc-50 text-black shadow-lego-sm font-semibold"
+                    ? "bg-lego-blue text-white rounded-tr-none" 
+                    : "bg-zinc-50 border border-zinc-100 text-zinc-700 rounded-tl-none font-normal"
                 }`}>
                   {msg.text}
                 </div>
@@ -187,30 +188,30 @@ export default function AdvisorConsole({
             ))}
 
             {loading && (
-              <div className="flex items-center gap-2 text-black font-black italic animate-pulse">
-                <RefreshCw className="w-3.5 h-3.5 animate-spin text-lego-red" />
+              <div className="flex items-center gap-2 text-zinc-500 font-semibold italic animate-pulse text-[11px] py-1">
+                <RefreshCw className="w-3.5 h-3.5 animate-spin text-lego-blue" />
                 Gemini Advisor is analyzing parameters...
               </div>
             )}
 
             {errorText && (
-              <div className="p-4 bg-lego-red text-white border-2 border-black rounded-none flex gap-2 items-start" id="advisor-error">
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-white" />
+              <div className="p-4 bg-red-50 text-red-900 border border-red-200 rounded-xl flex gap-3 items-start" id="advisor-error">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
                 <div className="space-y-1">
-                  <span className="font-black uppercase tracking-wider text-white">Advisor Connection Error</span>
-                  <p className="text-[11px] font-bold leading-normal text-white">{errorText}</p>
+                  <span className="font-heading font-semibold text-red-800 block text-xs">Advisor Connection Error</span>
+                  <p className="text-[11px] font-normal leading-normal text-red-700">{errorText}</p>
                 </div>
               </div>
             )}
           </div>
 
           {/* User Input bar */}
-          <form onSubmit={handleSendCustom} className="p-3 bg-zinc-100 border-t-3 border-black flex items-center gap-2">
+          <form onSubmit={handleSendCustom} className="p-3 bg-zinc-50/50 border-t border-zinc-150 flex items-center gap-2">
             <input
               type="text"
               disabled={loading}
               placeholder="Ask a custom safety, resale, or standard commission split question..."
-              className="flex-1 px-3 py-2.5 border-2 border-black rounded-none text-xs focus:outline-none bg-white text-black font-black disabled:opacity-50 placeholder:text-zinc-400"
+              className="flex-1 px-4 py-2.5 border border-zinc-200 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-lego-blue bg-white text-zinc-850 font-normal disabled:opacity-50 placeholder:text-zinc-400"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               id="advisor-input"
@@ -218,7 +219,7 @@ export default function AdvisorConsole({
             <button
               type="submit"
               disabled={loading || !inputText.trim()}
-              className="p-2.5 bg-lego-red text-white border-2 border-black rounded-none shadow-lego-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-lego active:translate-y-0 active:shadow-none transition-all cursor-pointer disabled:opacity-50"
+              className="p-2.5 bg-lego-blue text-white hover:bg-slate-900 rounded-xl transition-all cursor-pointer disabled:opacity-40 shadow-sm"
               id="advisor-send-button"
             >
               <Send className="w-4 h-4" />

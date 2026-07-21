@@ -104,30 +104,30 @@ export default function Evaluator({
   }, [items]);
 
   return (
-    <div className="space-y-8" id="trade-evaluator">
+    <div className="space-y-10" id="trade-evaluator">
       {/* Educational Block on Resale Realities */}
       {showExplanation && (
-        <div className="bg-white border-3 border-black p-5 shadow-lego rounded-none space-y-4 max-w-4xl">
+        <div className="bg-white border border-zinc-100 p-6 rounded-2xl shadow-lego max-w-4xl">
           <div className="flex items-start justify-between gap-4">
-            <div className="flex gap-3">
-              <div className="p-2 bg-lego-yellow border-2 border-black shadow-lego-sm rounded-none shrink-0">
-                <Info className="w-5 h-5 text-black shrink-0" />
+            <div className="flex gap-4">
+              <div className="p-2.5 bg-zinc-50 border border-zinc-200/50 rounded-xl shrink-0">
+                <Info className="w-5 h-5 text-lego-blue shrink-0" />
               </div>
-              <div className="space-y-1.5">
-                <h3 className="text-xs font-black text-black tracking-wider uppercase bg-lego-yellow px-2 py-0.5 inline-block border-2 border-black shadow-lego-sm">
-                  Understanding LEGO Resale Economics
+              <div className="space-y-2">
+                <h3 className="text-xs font-mono font-bold text-amber-600 uppercase tracking-wider">
+                  Understanding Resale Exchange Economics
                 </h3>
-                <p className="text-xs text-black font-medium leading-relaxed pt-2">
-                  Many sellers go to local toy reseller stores expecting full retail value and walk away feeling scammed. To operate successfully, brick-and-mortar storefronts face heavy overheads: retail rent, full-time wages for workers to verify, count, clean, and organize thousands of loose parts, and holding slow-moving inventory.
+                <p className="text-xs text-zinc-600 font-normal leading-relaxed">
+                  Many fans go to physical toy resale outlets expecting full brand retail pricing, and are surprised by trade values. To operate sustainably, brick-and-mortar storefronts carry significant operational overhead: retail leasing, state sales tax compliance, and skilled labor to sort, authenticate, clean, and inventory tens of thousands of loose pieces.
                 </p>
-                <p className="text-xs text-black font-bold leading-relaxed">
-                  Standard industry trade ratios are: Cash offers typically represent 30% to 40% of BrickLink average secondary market rates. Store Credit typically represents 50% to 60%, incentivizing community rotation. Prepare your items beforehand (dusting them, sorting minifigs) to unlock maximum value.
+                <p className="text-xs text-zinc-700 font-semibold leading-relaxed">
+                  Standard trade-in industry benchmarks: Cash offers generally represent 30% to 40% of standard secondary market value (e.g. verified BrickLink historical sells), while Store Credit offers represent 50% to 60%, incentivizing community circular economy.
                 </p>
               </div>
             </div>
             <button 
               onClick={() => setShowExplanation(false)} 
-              className="text-lego-red hover:underline font-black uppercase tracking-wider text-[11px] shrink-0 cursor-pointer"
+              className="text-zinc-400 hover:text-zinc-600 font-semibold uppercase tracking-wider text-[10px] shrink-0 cursor-pointer"
               id="hide-explanation"
             >
               Dismiss
@@ -138,33 +138,33 @@ export default function Evaluator({
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Form Builder */}
-        <form onSubmit={handleAddItem} className="lg:col-span-5 bg-white border-3 border-black shadow-lego rounded-none p-5 space-y-4">
-          <h2 className="text-sm font-black text-black uppercase tracking-wider pb-3 border-b-2 border-black flex items-center gap-1.5">
+        <form onSubmit={handleAddItem} className="lg:col-span-5 bg-white border border-zinc-100 shadow-lego rounded-2xl p-6 space-y-5">
+          <h2 className="text-sm font-heading font-bold text-zinc-900 pb-3 border-b border-zinc-100 flex items-center gap-2">
             <Layers className="w-4 h-4 text-lego-red" />
             Add Item to Appraisal
           </h2>
 
           {/* Quick Presets Select */}
-          <div className="space-y-1">
-            <label className="text-[10px] font-black text-black uppercase tracking-wider block">Quick Reference Presets</label>
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Quick Reference Presets</label>
             <select
               onChange={(e) => handleSelectPreset(e.target.value)}
-              className="w-full px-2 py-1.5 bg-white border-2 border-black rounded-none text-xs font-bold focus:outline-none"
+              className="w-full px-3 py-2 bg-white border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none focus:ring-1 focus:ring-lego-blue text-zinc-800"
               defaultValue=""
               id="preset-select"
             >
               <option value="" disabled>-- Select a standard preset (optional) --</option>
               {STANDARD_PRESETS.map((p, idx) => (
                 <option key={idx} value={p.name}>
-                  {p.name} ({p.type === "bulk" ? `$${p.value}/lb` : `$${p.value} retail`})
+                  {p.name} ({p.type === "bulk" ? `$${p.value}/lb` : `$${p.value} value`})
                 </option>
               ))}
             </select>
           </div>
 
           {/* Item Type */}
-          <div className="space-y-1">
-            <label className="text-[10px] font-black text-black uppercase tracking-wider block">Item Category</label>
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Item Category</label>
             <div className="grid grid-cols-3 gap-2">
               {(["set", "minifig", "bulk"] as const).map(type => (
                 <button
@@ -181,10 +181,10 @@ export default function Evaluator({
                       setRetailValueInput("100");
                     }
                   }}
-                  className={`py-1.5 border-2 border-black text-center rounded-none text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
+                  className={`py-2 text-center rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                     itemType === type 
-                      ? "bg-lego-blue text-white shadow-lego-sm translate-x-[-1px] translate-y-[-1px]" 
-                      : "bg-white text-black hover:bg-zinc-100 active:translate-y-0"
+                      ? "bg-lego-blue text-white shadow-sm" 
+                      : "bg-zinc-50 text-zinc-600 hover:bg-zinc-100"
                   }`}
                   id={`type-${type}`}
                 >
@@ -195,13 +195,13 @@ export default function Evaluator({
           </div>
 
           {/* Item Name */}
-          <div className="space-y-1">
-            <label className="text-[10px] font-black text-black uppercase tracking-wider block">Item Description / Name</label>
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Item Description / Name</label>
             <input
               type="text"
               required
               placeholder={itemType === "set" ? "e.g., Star Wars X-Wing Starfighter 75301" : itemType === "minifig" ? "e.g., Darth Vader (Imperial)" : "e.g., Loose clean bricks"}
-              className="w-full px-3 py-1.5 border-2 border-black rounded-none text-xs font-bold focus:outline-none bg-zinc-50"
+              className="w-full px-3.5 py-2 border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none focus:ring-1 focus:ring-lego-blue bg-zinc-50/50 text-zinc-800"
               value={name}
               onChange={(e) => setName(e.target.value)}
               id="input-item-name"
@@ -210,13 +210,13 @@ export default function Evaluator({
 
           {/* Condition and inputs based on type */}
           {itemType === "bulk" ? (
-            <div className="space-y-1">
-              <label className="text-[10px] font-black text-black uppercase tracking-wider flex items-center justify-between">
+            <div className="space-y-2 bg-zinc-50 p-3 rounded-lg border border-zinc-200/40">
+              <label className="text-[10px] font-mono font-bold text-zinc-500 uppercase tracking-wider flex items-center justify-between">
                 <span>Weight (Pounds)</span>
-                <span className="font-mono text-black font-black">{weight} lbs</span>
+                <span className="font-mono text-zinc-800 font-bold">{weight} lbs</span>
               </label>
               <div className="flex items-center gap-3">
-                <Scale className="w-4 h-4 text-black shrink-0" />
+                <Scale className="w-4 h-4 text-zinc-400 shrink-0" />
                 <input
                   type="range"
                   min="1"
@@ -224,21 +224,21 @@ export default function Evaluator({
                   step="1"
                   value={weight}
                   onChange={(e) => handleWeightChange(parseInt(e.target.value))}
-                  className="w-full accent-lego-blue"
+                  className="w-full accent-lego-blue cursor-pointer h-1.5 bg-zinc-200 rounded-lg appearance-none"
                   id="input-weight"
                 />
               </div>
             </div>
           ) : (
-            <div className="space-y-1">
-              <label className="text-[10px] font-black text-black uppercase tracking-wider block">Condition Status</label>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Condition Status</label>
               <select
                 value={condition}
                 onChange={(e) => setCondition(e.target.value as any)}
-                className="w-full px-2 py-1.5 bg-white border-2 border-black rounded-none text-xs font-bold focus:outline-none"
+                className="w-full px-3 py-2 bg-white border border-zinc-200 rounded-lg text-xs font-medium focus:outline-none focus:ring-1 focus:ring-lego-blue text-zinc-850"
                 id="input-condition"
               >
-                <option value="New Sealed">New & Sealed In Box (+25% premium)</option>
+                <option value="New Sealed">New & Sealed In Box (+25% Premium)</option>
                 <option value="Used Complete">Used & Complete (Standard baseline)</option>
                 <option value="Used Incomplete">Used & Incomplete (Missing pieces, -50%)</option>
               </select>
@@ -246,18 +246,18 @@ export default function Evaluator({
           )}
 
           {/* Estimated secondary retail value */}
-          <div className="space-y-1">
-            <label className="text-[10px] font-black text-black uppercase tracking-wider flex items-center justify-between">
-              <span>Estimated Market Retail Value ($)</span>
-              <span className="text-[10px] text-zinc-500 font-bold normal-case">BrickLink / Ebay Average</span>
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center justify-between">
+              <span>BrickLink / eBay Market Value ($)</span>
+              <span className="text-[9px] text-zinc-400 font-medium tracking-normal normal-case">Average Sold Rate</span>
             </label>
             <div className="relative">
-              <span className="absolute left-3 top-2 text-xs text-black font-black font-mono">$</span>
+              <span className="absolute left-3.5 top-2.5 text-xs text-zinc-400 font-mono">$</span>
               <input
                 type="number"
                 min="1"
                 required
-                className="w-full pl-7 pr-3 py-1.5 border-2 border-black rounded-none text-xs font-black focus:outline-none bg-zinc-50 font-mono"
+                className="w-full pl-8 pr-3 py-2.5 border border-zinc-200 rounded-lg text-xs font-bold focus:outline-none focus:ring-1 focus:ring-lego-blue bg-zinc-50/50 text-zinc-850 font-mono"
                 value={retailValueInput}
                 onChange={(e) => setRetailValueInput(e.target.value)}
                 id="input-retail-value"
@@ -267,7 +267,7 @@ export default function Evaluator({
 
           <button
             type="submit"
-            className="w-full py-2.5 bg-lego-red text-white border-3 border-black rounded-none font-black uppercase tracking-widest text-xs shadow-lego hover:shadow-lego-lg hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-y-0 active:shadow-none transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            className="w-full py-2.5 bg-lego-red hover:bg-red-700 text-white rounded-lg font-semibold uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
             id="add-item-button"
           >
             <Plus className="w-4 h-4 text-white" /> Add to Appraisal List
@@ -277,58 +277,58 @@ export default function Evaluator({
         {/* Right Column: Calculations & Cart */}
         <div className="lg:col-span-7 space-y-6">
           {/* Main Calculation Summary Card */}
-          <div className="bg-zinc-900 text-white border-3 border-black rounded-none p-6 space-y-4 shadow-lego relative overflow-hidden" id="valuation-summary">
-            {/* Structural accent mark to anchor attention */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-zinc-800 rounded-none border-l-2 border-b-2 border-black rotate-45 translate-x-12 -translate-y-12 opacity-35" />
+          <div className="bg-zinc-950 text-white rounded-2xl p-6 md:p-8 space-y-6 shadow-lego relative overflow-hidden" id="valuation-summary">
+            {/* Subtle atmospheric gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-lego-blue/10 to-transparent pointer-events-none" />
 
-            <div className="relative space-y-3">
-              <h2 className="text-xs font-black tracking-widest text-lego-yellow uppercase">Valuation Summary</h2>
+            <div className="relative space-y-4">
+              <h2 className="text-xs font-mono font-bold tracking-widest text-amber-500 uppercase">Valuation Summary</h2>
               
-              <div className="grid grid-cols-2 gap-4 pb-4 border-b-2 border-zinc-800">
+              <div className="grid grid-cols-2 gap-4 pb-6 border-b border-zinc-800">
                 <div>
-                  <span className="text-[10px] text-zinc-400 uppercase font-black tracking-wider block">Total Items Listed</span>
-                  <span className="text-3xl font-black font-mono tracking-tight text-white">{items.length}</span>
+                  <span className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider block mb-1">Total Items</span>
+                  <span className="text-3xl font-heading font-bold text-white">{items.length}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-zinc-400 uppercase font-black tracking-wider block">Secondary Market Value</span>
-                  <span className="text-3xl font-black font-mono tracking-tight text-lego-yellow">${calculations.adjustedValue.toFixed(2)}</span>
+                  <span className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider block mb-1">Secondary Market baseline</span>
+                  <span className="text-3xl font-heading font-bold text-amber-500 font-mono">${calculations.adjustedValue.toFixed(2)}</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                 {/* Cash offer range */}
-                <div className="bg-zinc-800 p-3.5 border-2 border-zinc-700 rounded-none">
-                  <span className="text-[10px] text-zinc-300 uppercase block font-black tracking-wider mb-1">Est. Cash Value (30-40%)</span>
+                <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 space-y-1">
+                  <span className="text-[9px] font-mono text-zinc-400 uppercase block tracking-wider">Est. Cash payout (30-40%)</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xl font-black text-white font-mono">${calculations.cashMin.toFixed(0)}</span>
-                    <span className="text-xs text-zinc-400 font-mono">to</span>
-                    <span className="text-xl font-black text-white font-mono">${calculations.cashMax.toFixed(0)}</span>
+                    <span className="text-2xl font-bold text-white font-mono">${calculations.cashMin.toFixed(0)}</span>
+                    <span className="text-xs text-zinc-500 font-mono">to</span>
+                    <span className="text-2xl font-bold text-white font-mono">${calculations.cashMax.toFixed(0)}</span>
                   </div>
-                  <span className="text-[10px] text-zinc-400 block mt-1 leading-normal">Recommended for fast, guaranteed payout.</span>
+                  <span className="text-[10px] text-zinc-500 block leading-normal pt-1">Recommended for immediate physical settlement.</span>
                 </div>
 
                 {/* Store credit offer range */}
-                <div className="bg-zinc-850 p-3.5 border-2 border-lego-yellow rounded-none">
-                  <span className="text-[10px] text-lego-yellow uppercase block font-black tracking-wider mb-1">Est. Store Credit (50-60%)</span>
+                <div className="bg-zinc-900 border border-amber-500/25 rounded-xl p-4 space-y-1">
+                  <span className="text-[9px] font-mono text-amber-500 uppercase block tracking-wider">Est. Store Credit (50-60%)</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xl font-black text-lego-yellow font-mono">${calculations.creditMin.toFixed(0)}</span>
-                    <span className="text-xs text-zinc-300 font-mono">to</span>
-                    <span className="text-xl font-black text-lego-yellow font-mono">${calculations.creditMax.toFixed(0)}</span>
+                    <span className="text-2xl font-bold text-amber-500 font-mono">${calculations.creditMin.toFixed(0)}</span>
+                    <span className="text-xs text-zinc-400 font-mono">to</span>
+                    <span className="text-2xl font-bold text-amber-500 font-mono">${calculations.creditMax.toFixed(0)}</span>
                   </div>
-                  <span className="text-[10px] text-zinc-300 block mt-1 leading-normal">Best trade value. Exchange for Lego sets directly in-store.</span>
+                  <span className="text-[10px] text-zinc-400 block leading-normal pt-1">Optimal value. Directly tradable for loose brick inventory.</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Current Inventory Table List */}
-          <div className="bg-white border-3 border-black rounded-none shadow-lego overflow-hidden" id="inventory-list">
-            <div className="px-5 py-4 border-b-3 border-black bg-zinc-50 flex items-center justify-between">
-              <h3 className="text-xs font-black text-black uppercase tracking-wider">Appraisal List Items</h3>
+          <div className="bg-white border border-zinc-100 rounded-2xl shadow-lego overflow-hidden" id="inventory-list">
+            <div className="px-6 py-4 border-b border-zinc-100 bg-zinc-50/50 flex items-center justify-between">
+              <h3 className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-wider">Appraisal List Items</h3>
               {items.length > 0 && (
                 <button
                   onClick={() => setItems([])}
-                  className="px-2 py-1 bg-lego-red text-white border-2 border-black rounded-none text-[10px] font-black uppercase tracking-wider shadow-lego-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-lego active:translate-y-0 active:shadow-none transition-all cursor-pointer"
+                  className="px-2.5 py-1 text-zinc-500 hover:text-lego-red rounded-lg border border-zinc-200 text-[10px] font-semibold uppercase tracking-wider bg-white transition-colors cursor-pointer"
                   id="clear-all-items"
                 >
                   Clear All
@@ -337,45 +337,45 @@ export default function Evaluator({
             </div>
 
             {items.length === 0 ? (
-              <div className="p-10 text-center text-zinc-500 space-y-2">
-                <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Inventory Empty</p>
-                <p className="text-xs">Your appraisal list is empty. Add Lego sets, minifigures, or bulk packages to view payout estimates.</p>
+              <div className="p-12 text-center text-zinc-500 space-y-2">
+                <p className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">Inventory Empty</p>
+                <p className="text-xs text-zinc-500 font-normal">Your custom trade-in appraisal list is empty. Add elements on the left panel to begin.</p>
               </div>
             ) : (
-              <div className="divide-y-2 divide-black">
+              <div className="divide-y divide-zinc-100">
                 {items.map((item) => (
-                  <div key={item.id} className="p-4 flex items-center justify-between text-xs gap-4 bg-white hover:bg-zinc-50 transition-colors" id={`inventory-item-${item.id}`}>
-                    <div className="space-y-1 min-w-0">
+                  <div key={item.id} className="p-5 flex items-center justify-between text-xs gap-4 bg-white hover:bg-zinc-50/40 transition-colors" id={`inventory-item-${item.id}`}>
+                    <div className="space-y-1.5 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-black text-black text-sm">{item.name}</span>
-                        <span className={`px-2 py-0.5 text-[9px] font-black uppercase border-2 border-black rounded-none ${
-                          item.type === "set" ? "bg-lego-yellow text-black" : item.type === "minifig" ? "bg-lego-blue text-white" : "bg-lego-red text-white"
+                        <span className="font-semibold text-zinc-900 text-sm">{item.name}</span>
+                        <span className={`px-2 py-0.5 text-[9px] font-semibold uppercase rounded border ${
+                          item.type === "set" ? "bg-amber-50 text-amber-800 border-amber-200" : item.type === "minifig" ? "bg-sky-50 text-sky-800 border-sky-200" : "bg-zinc-50 text-zinc-800 border-zinc-200"
                         }`}>
                           {item.type === "set" ? "Set" : item.type === "minifig" ? "Minifig" : `${item.weightPounds} lbs Bulk`}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-[10px] text-zinc-600 font-bold">
-                        <span>Condition: <span className="text-black uppercase font-black">{item.condition}</span></span>
+                      <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-normal">
+                        <span>Condition: <span className="text-zinc-600 font-semibold uppercase">{item.condition}</span></span>
                         <span>•</span>
-                        <span>Retail Market Value: <span className="text-black font-black font-mono">${item.retailValue.toFixed(0)}</span></span>
+                        <span>Market baseline: <span className="text-zinc-600 font-semibold font-mono">${item.retailValue.toFixed(0)}</span></span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-4 shrink-0">
                       {/* Live Calculated Payout ranges for single item */}
-                      <div className="text-right hidden sm:block font-bold">
-                        <div className="text-[10px] text-zinc-600">
-                          Cash: <strong className="font-mono text-black font-black">${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.3).toFixed(0)}-${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.4).toFixed(0)}</strong>
+                      <div className="text-right hidden sm:block">
+                        <div className="text-[10px] text-zinc-500">
+                          Cash: <strong className="font-mono text-zinc-800 font-bold">${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.3).toFixed(0)}-${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.4).toFixed(0)}</strong>
                         </div>
                         <div className="text-[10px] text-lego-red">
-                          Credit: <strong className="font-mono text-lego-red font-black">${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.5).toFixed(0)}-${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.6).toFixed(0)}</strong>
+                          Credit: <strong className="font-mono text-lego-red font-bold">${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.5).toFixed(0)}-${(item.retailValue * (item.condition === "Used Incomplete" ? 0.5 : item.condition === "New Sealed" ? 1.25 : 1) * 0.6).toFixed(0)}</strong>
                         </div>
                       </div>
 
                       {/* Delete */}
                       <button
                         onClick={() => handleRemoveItem(item.id)}
-                        className="p-1.5 bg-zinc-100 hover:bg-lego-red hover:text-white border-2 border-black rounded-none shadow-lego-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-lego active:translate-y-0 active:shadow-none transition-all cursor-pointer text-black"
+                        className="p-1.5 hover:bg-zinc-100 rounded-lg text-zinc-400 hover:text-lego-red transition-all cursor-pointer border border-transparent hover:border-zinc-200"
                         title="Remove item"
                         id={`delete-item-${item.id}`}
                       >
